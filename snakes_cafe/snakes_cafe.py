@@ -21,12 +21,14 @@ def restaurant_menu():
     
     print("\nWhat would you like to order?")
     order = input("> ")
+    count = 0
     while order.lower() != "quit":
-        count = 0
+        
         if order.lower() in [item.lower() for sublist in menu.values() for item in sublist]:
-            count +=1
+            count = count +1
             print(f"{count} order of {order} has been added to your meal")
         else:
+            print(f"\nplease chaos from the menu")
             print(f"\nWhat would you like to order?")
         order = input("> ")
     
