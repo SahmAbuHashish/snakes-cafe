@@ -18,31 +18,22 @@ def restaurant_menu():
         print(f"\n{category.capitalize()}:")
         for item in items:
             print(f"- {item}")
-
+    
     print("\nWhat would you like to order?")
     order = input("> ")
-    order_counts = {}
+    count = 0
     while order.lower() != "quit":
-
-        found_item = False
-        for sublist in menu.values():
-            for item in sublist:
-                if order.lower() == item.lower():
-                    found_item = True
-                    if item.lower() in order_counts:
-                        order_counts[item.lower()] += 1
-                    else:
-                        order_counts[item.lower()] = 1
-                    print(f"{order_counts[item.lower()]} order of {item} has been added to your meal")
-                    break
-
-            if found_item:
-                break
-
-        if not found_item:
-            print(f"\nPlease choose from the menu")
-        print("\nWhat would you like to order?")
+        
+        if order.lower() in [item.lower() for sublist in menu.values() for item in sublist]:
+            count = count + 1
+            print(f"{count} order of {order} has been added to your meal")
+        else:
+            print(f"\nplease chaos from the menu")
+            print(f"\nWhat would you like to order?")
         order = input("> ")
-
+    
+    
 restaurant_menu()
+
+
 
